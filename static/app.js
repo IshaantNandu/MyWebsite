@@ -37,7 +37,7 @@ codes.forEach((element)=>{
     });
 });
 
-const objects = document.querySelectorAll('p,table,div:not(.highlight,.codehilite),img,tr,td, ul,li,ol')
+const objects = document.querySelectorAll('p,a,table,div:not(.highlight,.codehilite),img,tr,td, ul,li,ol')
 const observer=new IntersectionObserver((entries)=>{
     entries.forEach(
         (entry)=>{
@@ -53,3 +53,7 @@ const observer=new IntersectionObserver((entries)=>{
 });
 
 objects.forEach((el)=>observer.observe(el));
+
+document.querySelectorAll('kbd,button').forEach(element=>{
+    element.classList.add('kbc-button')
+})

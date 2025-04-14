@@ -21,6 +21,8 @@
     --persimmon: #e94b1b;
     --pumpkin: #e2620c;
     --orange: #e66702;
+    --lemon:#ffe100;
+    --neon-green:#e0ff17;
     --verdant: #29d246;
     --bright-green: #00d436;
     --new-green: #13be54;
@@ -44,7 +46,12 @@
 .links {
     display: block;
 }
-p,table,div:not(.codehilite):not(.highlight),img,tr,td, ul,li,ol{
+img{
+    max-width: 100%;
+  height: auto;
+  border-radius: 24px;
+}
+p,table,img,tr,td, ul,li,ol{
     transition: all 1s ease-out;
     opacity:0;
     filter: blur(5px);
@@ -85,6 +92,7 @@ p,table,div:not(.codehilite):not(.highlight),img,tr,td, ul,li,ol{
 * {
     text-align: center;
     caret-color: rgb(224, 255, 23);
+    font-family: var(--normalFont), sans-serif;
 
 }
 body {
@@ -105,7 +113,7 @@ body {
 a {
     text-decoration: none;
     transition: all 1s ease;
-    color: rgb(224, 255, 23);
+    color: var(--neon-green);
 }
 ul,
 li,
@@ -153,6 +161,9 @@ pre {
     border-radius: 48px;
     background: rgb(40, 44, 52);
 }
+button, .kbc-button{
+    font-family: var(--normalFont),sans-serif!important;
+}
 .copy-button {
     position: absolute;
     top: 2px;
@@ -164,7 +175,7 @@ pre {
     border-radius: 0.5em;
     padding: 2px 7px;
 }
-.codehilite,.highlight {
+.codehilite:has( > pre),.highlight:has( > pre) {
     border-radius: 48px;
     border: 5px inset black;
     padding: 30px;
@@ -174,7 +185,7 @@ pre {
     overflow-x: scroll;
     margin: 0 auto;
 }
-.codehilite::before,.highlight::before {
+.codehilite:has( > pre)::before,.highlight:has( > pre)::before {
     content: "Code";
     color: white;
 }

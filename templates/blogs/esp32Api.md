@@ -39,7 +39,7 @@ but they're all paid, and their free plans suck. No offense, So I decided to cre
 simple [HTTP POST](https://en.wikipedia.org/wiki/POST_(HTTP)) method to output the temperature in
 a [JSON](https://en.wikipedia.org/wiki/JSON "JavaScript Object Notation") format. Here's the code:
 
-```cpp
+```cpp 
 #include <WiFi.h>
 #include <WebServer.h>
 #include <Arduino.h>
@@ -131,7 +131,7 @@ tutorial [here](https://lastminuteengineers.com/getting-started-with-esp32/). Co
 replace "SSID" and "SecretPassword" with your 2.4 GHZ WiFi SSID and Password in lines 5,6.Then press the 'Upload'
 button. Then wire the ESP32 like the [table below](). Open the serial monitor, and a link like http://192.168.50.212
 will be displayed. Type the link in you favourite browser, and _Voila!_ something like
-`   {   "temperature":34,   "humidity":12,   "heatIndex":32   }` will appear.
+`:::json   {   "temperature":34,   "humidity":12,   "heatIndex":32   }` will appear.
 
 Wiring Diagram
 
@@ -152,4 +152,81 @@ any Python IDE if you want to. Go to [the Thonny website](https://thonny.org/) a
 about Python on [RealPython](https://realpython.com/) and [W3schools](https://www.w3schools.com/python/default.asp)
 websites. We are going to use a popular plotting library called _[MatPlotLib](https://matplotlib.org/)_ and a JSON
 decoding library callled _[μjson](https://github.com/ultrajson/ultrajson)_.
+---
+![Follow the instructions below](../../static/images/esp32apipip.gif)
+
+Before you upload your code, open Thonny, then go to Tools > Manage packages and type `Ujson` and click ujson, then click <kbd>install</kbd>. Then click Close, go to Tools > Manage packages and type `Matplotlib` and click matplotlib,then click <kbd>install</kbd>. Or **JUST FOLLOW THE GIF ABOVE**
+
+Replace `"http://192.168.50.212"` in the code with the link in the serial monitor. Run the code using F5. So, here's the code:
+
+```python
+import requests
+import matplotlib.pyplot as plt
+import time
+import threading
+
+# Replace with link in serial monitor
+url = "http://192.168.50.212/"
+
+# Variables to store the data
+temperature = []
+humidity = []
+heat_index = []
+
+# Function to fetch data from the Arduino web server
+def fetch_data():
+   while True:
+       try:
+           # Send a GET request to the Arduino web server
+           response = requests.get(url)
+           
+           # Parse the JSON data
+           data = response.json()
+           
+           # Append the data to the lists
+           temperature.append(data["temperature"])
+           humidity.append(data["humidity"])
+           heat_index.append(data["heatIndex"])
+           
+           # Wait for 2 seconds before fetching the next data
+           time.sleep(2)
+       except:
+           print("Error fetching data")
+
+# Start the data fetching thread
+data_thread = threading.Thread(target=fetch_data)
+data_thread.start()
+
+# Plot the data
+plt.figure(figsize=(12, 6))
+
+# Temperature plot
+plt.subplot(1, 3, 1)
+plt.plot(temperature)
+plt.title("Temperature")
+plt.xlabel("Time")
+plt.ylabel("Temperature (°C)")
+
+# Humidity plot
+plt.subplot(1, 3, 2)
+plt.plot(humidity)
+plt.title("Humidity")
+plt.xlabel("Time")
+plt.ylabel("Humidity (%)")
+
+# Heat index plot
+plt.subplot(1, 3, 3)
+plt.plot(heat_index)
+plt.title("Heat Index")
+plt.xlabel("Time")
+plt.ylabel("Heat Index (°C)")
+
+plt.tight_layout()
+plt.show()
+```
+
+- - -
+
+So there, we have a free, open-source, and highly customizeable ESP32 DHT22 weather dashboard! Get the code from [my Github Repo](https://github.com/IshaantNandu/Esp32_HTTP_post) . See you later for more blogs 😁.
+
 

@@ -72,6 +72,7 @@ def createApp():
                         print(f"{rule}: {rule.endpoint}")
     routeMapping()
     ext = Sitemap(app=app)
+    ext.app.config['SITEMAP_INCLUDE_RULES_WITHOUT_PARAMS']=True
     return app
 
 
