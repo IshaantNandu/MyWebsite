@@ -47,3 +47,33 @@ Now, all you have to do is implement it in an element using the shorthand
 `animation` property or using the `animation-name:/*insert animation-name*/;`, 
 `animation-duration:/*insert animation-duration*/;`, `animation-timing-function:/*insert timing function*/;`
 and `animation-delay:/*insert animation-delay*/;` properties. 
+Here's an example of how i've used it:-
+```css  
+button:hover{
+    animation:fadein 1.5s ease-in-out; 
+}
+```
+<style>
+@keyframes fadein{
+    0%{
+        /*
+        Your starting properties go here: like
+        */
+        opacity:0;
+        transform:scale(0.5);
+    }
+    100%{
+        /*
+        Your ending properties go here: like
+        */
+        opacity:1;
+        transform:scale(1);
+    }
+}
+.animista:hover{
+    animation:fadein 1.5s ease-in-out; 
+}
+</style>
+<button class="animista nk">
+Click or Hover me
+</button>

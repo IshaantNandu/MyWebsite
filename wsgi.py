@@ -46,6 +46,7 @@ def createApp():
         return lambda: html_content
 
     def routeMapping(dir='./templates/blogs'):
+        app.register_error_handler(400,'Error')
         with scandir(dir) as entries:
             for entry in entries:
                 try:

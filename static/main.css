@@ -92,7 +92,6 @@ p,table,img,tr,td, ul,li,ol{
 * {
     text-align: center;
     caret-color: rgb(224, 255, 23);
-    font-family: var(--normalFont), sans-serif;
 
 }
 body {
@@ -148,7 +147,17 @@ footer {
     width: 100vw;
     animation: none;
 }
-
+.circle {
+    height: 24px;
+    width: 24px;
+    border-radius: 50%;
+    background-color: #29d246; /* Set the color here */
+    position: fixed;
+    top: 0;
+    left: 0;
+    pointer-events: none;
+    z-index: 99999999; /* so that it stays on top of all other elements */
+  }
 pre {
     line-height: 125%;
     text-align: left !important;
@@ -163,6 +172,7 @@ pre {
 }
 button, .kbc-button{
     font-family: var(--normalFont),sans-serif!important;
+    font-size:2rem;
 }
 .copy-button {
     position: absolute;
