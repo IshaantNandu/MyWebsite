@@ -90,5 +90,5 @@ The provided code is a Python script that generates a password using the secrets
 The purpose of this script is to provide a simple password generator that can generate either a "normal" password or a "brute-force safe" password, based on the user's input. The "brute-force safe" password is generated with a larger number of bytes, making it more secure against brute-force attacks.
 
 The script also includes some error handling, where it prompts the user to input 'y' or 'n' up to a maximum number of iterations (defined by `self.MaxIter`). If the user fails to provide a valid input after the maximum number of iterations, the script raises a `NameError` with a custom error message.
----
+***
 I hope you had fun reading this blog. Get the code from [my Github Repo](https://github.com/IshaantNandu/PyPassGenerator). See you later for more blogs 😁.

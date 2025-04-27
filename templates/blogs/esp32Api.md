@@ -24,7 +24,7 @@ from [here](https://www.amazon.com/Espressif-ESP32-DevKitC-32E-Development-Board
 I'm learning how to use it. If you want to get started, I recommend these
 links: [Random Nerd Tutorials](https://randomnerdtutorials.com/projects-esp32/)
 or [Last Minute Engineers](https://lastminuteengineers.com/electronics/esp32-projects//). I suggest you go to
-this [this article](https://lastminuteengineers.com/esp32-dht11-dht22-web-server-tutorial/) for extra reference.
+[this article](https://lastminuteengineers.com/esp32-dht11-dht22-web-server-tutorial/) for extra reference.
 
 - - -
 
@@ -227,6 +227,6 @@ plt.show()
 
 - - -
 
-So there, we have a free, open-source, and highly customizeable ESP32 DHT22 weather dashboard! Get the code from [my Github Repo](https://github.com/IshaantNandu/Esp32_HTTP_post) . See you later for more blogs 😁.
+So there, we have a free, open-source, and highly customizable ESP32 DHT22 weather dashboard! Get the code from [my Github Repo](https://github.com/IshaantNandu/Esp32_HTTP_post) . See you later for more blogs 😁.
 
 

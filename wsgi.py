@@ -35,7 +35,8 @@ def createApp():
                   'pymdownx.tabbed',
                   'pymdownx.tasklist',
                   'pymdownx.inlinehilite',
-                  'pymdownx.emoji',"markdown.extensions.codehilite"]
+                  'pymdownx.emoji',
+                  "markdown.extensions.codehilite"]
     app: Flask = Flask(__name__)
     view_funcs = {}
     template: str = ''
@@ -45,8 +46,12 @@ def createApp():
     def create_view_func(html_content):
         return lambda: html_content
 
+    @app.errorhandler(404)
+    def page_not_found(e):
+        # note that we set the 404 status explicitly
+        return render_template('404.htm'), 404
     def routeMapping(dir='./templates/blogs'):
-        app.register_error_handler(400,'Error')
+
         with scandir(dir) as entries:
             for entry in entries:
                 try:
